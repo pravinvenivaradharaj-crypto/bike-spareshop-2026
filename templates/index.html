@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Spare Shop</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>🏍 Bike Spare Shop</h1>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Premium Bike Spare Parts</h2>
+        <p>Original spare parts for all bikes at the best price.</p>
+
+        <input type="text" id="searchBox" placeholder="Search spare parts...">
+<button onclick="searchProducts()">Search</button>
+    </section>
+
+    <section class="products">
+
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/brake.jpg') }}" alt="Brake">
+            <h3>Brake Pad</h3>
+            <p>₹799</p>
+            <button>Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/oil.jpg') }}" alt="Oil">
+            <h3>Engine Oil</h3>
+            <p>₹999</p>
+            <button>Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/tyre.jpg') }}" alt="Tyre">
+            <h3>Bike Tyre</h3>
+            <p>₹2499</p>
+            <button>Add to Cart</button>
+        </div>
+
+    </section>
+<script>
+function searchProducts() {
+    let input = document.getElementById("searchBox").value.toLowerCase();
+    let products = document.getElementsByClassName("product");
+
+    for (let i = 0; i < products.length; i++) {
+        let name = products[i].getElementsByTagName("h3")[0].innerText.toLowerCase();
+
+        if (name.includes(input)) {
+            products[i].style.display = "block";
+        } else {
+            products[i].style.display = "none";
+        }
+    }
+}
+</script>
+</body>
+</html>
